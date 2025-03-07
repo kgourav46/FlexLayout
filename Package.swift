@@ -12,7 +12,7 @@ let package = Package(
     .library(name: "FlexLayout", targets: ["FlexLayout"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/facebook/yoga.git", from: "3.1.0"),
+    .package(name: "FlexYoga", url: "https://github.com/facebook/yoga.git", from: "3.1.0"),
   ],
   targets: [
     .target(
@@ -23,7 +23,7 @@ let package = Package(
     ),
     .target(
       name: "FlexLayoutYogaKit",
-      dependencies: ["yoga"],
+      dependencies: [.product(name: "yoga", package: "FlexYoga")], // Change here
       path: "Sources/YogaKit",
       publicHeadersPath: "include/YogaKit"
     ),
